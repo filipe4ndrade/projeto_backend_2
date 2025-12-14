@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Finalização da Compra</h2>
+
+  <div>
+    <h4 class="fw-bold">{{produto.nome}}</h4>
+    <p class="mb-2">
+      <strong>Preço:</strong> {{produto.preco}}
+    </p>
+    <p class="mb-3">
+      <strong>Disponibilidade:</strong> {{produto.estoque}}
+    </p>
+    
+    <hr>
+    
+    <form method="POST" action="/produto/comprar/{{produto._id}}">
+      <div class="mb-4">
+        <label for="quantidade" class="form-label">Quantidade:</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="quantidade" 
+          name="quantidade" 
+          min="1" 
+          max="{{produto.estoque}}" 
+          required
+          style="max-width: 200px;">
+      </div>
+      
+      <div>
+        <a href="/" class="btn btn-secondary">Voltar</a>
+        <button type="submit" class="btn btn-success">
+          <i class="bi bi-bag"></i> Confirmar Compra
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

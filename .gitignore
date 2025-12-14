@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Arquivos de ambiente
+.env
+.env.local
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Bootstrap (será instalado localmente)
+# Remova esta linha se quiser versionar o Bootstrap
+# public/bootstrap/

@@ -1,0 +1,70 @@
+<h1 class="mb-4 text-dark" style="font-weight: 600;">Gerenciamento de Pedidos</h1>
+
+{{#if pedidos.length}}
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="table-light">
+        <tr>
+          <th style="font-weight: 700;">Data do Pedido</th>
+          <th style="font-weight: 700;">Usuário</th>
+          <th style="font-weight: 700;">Última Atualização</th>
+          <th style="font-weight: 700;">Valor Total</th>
+          <th style="font-weight: 700;">Produtos Distintos</th>
+          <th style="font-weight: 700;">Status</th>
+          <th style="font-weight: 700;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pedidos}}
+          <tr>
+            <td>{{this.data_criacao}}</td>
+            <td>{{this.usuario_nome}}</td>
+            <td>{{this.data_atualizacao}}</td>
+            <td>R$ {{this.valor_total}}</td>
+            <td>{{this.quantidade_produtos}}</td>
+            <td>
+              <span style="font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+                {{#if (eq this.status 'CONCLUIDO')}}
+                  <span class="text-success">{{this.status}}</span>
+                {{else if (eq this.status 'CANCELADO')}}
+                  <span class="text-danger">{{this.status}}</span>
+                {{else if (eq this.status 'SUSPENSO')}}
+                  <span class="text-warning">{{this.status}}</span>
+                {{else}}
+                  <span class="text-secondary">{{this.status}}</span>
+                {{/if}}
+              </span>
+            </td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Ações do pedido">
+                <a href="/pedido/alterar/{{this.id}}/CANCELADO" 
+                   class="btn btn-danger btn-sm" 
+                   style="background-color: #dc3545; border-color: #dc3545; color: white;">
+                  Cancelar
+                </a>
+                <a href="/pedido/alterar/{{this.id}}/SUSPENSO" 
+                   class="btn btn-warning btn-sm" 
+                   style="background-color: #ffc107; border-color: #ffc107; color: #212529;">
+                  Suspender
+                </a>
+                <a href="/pedido/alterar/{{this.id}}/CONCLUIDO" 
+                   class="btn btn-success btn-sm" 
+                   style="background-color: #198754; border-color: #198754; color: white;">
+                  Concluir
+                </a>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{else}}
+  <div class="alert alert-info" role="alert">
+    Não há pedidos para gerenciar no momento.
+  </div>
+{{/if}}
+
+<a href="/" class="btn btn-secondary mt-3" style="background-color: #6c757d; border-color: #6c757d; color: white;">
+  Voltar
+</a>
