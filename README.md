@@ -28,8 +28,7 @@ Armazena dados com schema flexível:
 ### 1. Clonar o repositório
 
 ```bash
-git clone <url-do-repositorio>
-cd eCommerce
+git clone https://github.com/filipe4ndrade/projeto_backend_2.git
 ```
 
 ### 2. Instalar dependências
